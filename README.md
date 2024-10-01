@@ -49,7 +49,7 @@ Aprendizado de máquina<br>
 1. Carga horária: 38 horas
 1. Avaliação on-line por módulo
 1. Atividades práticas
-1. 13 de outubro a 15 de janeiro
+1. 1 de novembro a 31 de janeiro
 <!-- {ol:.content} -->
 
 
@@ -346,22 +346,18 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 <!-- {"hash": "info"} -->
 # Pré-requisitos para o certificado
 
-1. Realizar 75% das atividades práticas
-1. Obter 60% de aproveitamento no total das avaliações 
+1. Obter 60% de aproveitamento no total das avaliações (Práticas+teóricas)
 1. Realizar o pagamento do curso (prérequisito para acessar cada módulo)
-
+1. Terminar o módulo no prazo. O aluno poderá repetir o módulo gratuitamente, tendo novas ofertas do mesmo (iremos corrigir isso no edital). 
 
 
 <!-- {ol:.content} -->
 ---
 
 # Pagamentos e condições
-
-
-
 - R$ 460,00 ou 3 x R$ 180,00<!-- {ul:.bulleted} -->
-- **Primeiro lote:** R$ 320,00 à vista
-- Caso não seja pago a primeira GRU no prazo (até 02/10/2024), perderá a promoção
+- **Primeiro lote:** R$ 320,00 à vista. Inscrição até 02/10 pagamento até 07/10.
+  - Caso não seja pago no prazo (até 07/10/2024), perderá a promoção
 - À vista:
   - Pagamento antes do curso
   - O pagamento é prerequisito para acesso ao curso
@@ -369,19 +365,4 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
   - Pagamento antes de cada módulo
   - O pagamento é prerequisito para acesso ao módulo
   - O aluno poderá perder o direito de acessar o módulo caso não pague a tempo
----
-
-# Por fim
-
-Até a próxima ;-)
-
-Professores:
-~ Glívia Barbosa <[glivia@cefetmg.br](mailto:fegemo@cefetmg.br)>
-~ Daniel Hasan <[hasan@cefetmg.br](mailto:hasan@cefetmg.br)>
-
-Onde: 
-~ Sala 202, DECOM
-~ Sala 409, DECOM
-~ DECOM: Prédio 17 - Campus Nova Gameleira
-
 
