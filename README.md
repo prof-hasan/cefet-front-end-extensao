@@ -52,6 +52,11 @@ Aprendizado de máquina<br>
 1. 1 de novembro a 31 de janeiro
 <!-- {ol:.content} -->
 
+---
+<!-- {"layout": "section-header" } -->
+# Aula Inaugural
+## [Web e as Ovelhas 🐑 ](classes/intro) 
+![Logomarca do HTML](images/ovelha_foto.jpeg)
 
 ---
 <!-- {"layout": "section-header"} -->
@@ -64,9 +69,6 @@ Aprendizado de máquina<br>
 
 [Trabalhos](#tps)
   ~ Trabalho de alunos
-
-[Aulas](#aulas)
-  ~ Slides das aulas
 
 [Bibliografia](#bibliografia)
   ~ Livros e materiais básicos e complementares
@@ -105,15 +107,15 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 - [![](images/trabalhos/2018/disfarca-bobos.jpg)](https://disfarca-bobos.neocities.org)
 - [![](images/trabalhos/2020/pizza-clicker.jpg)](https://poipoipepe.github.io/Clicker-Pizza/)
 :::
-
+<!--
 ---
-<!-- {"hash": "slides"} -->
-# Aulas <!--<small>(1/3)</small>-->
+<!-- {"hash": "slides"} 
+# Aulas <!--<small>(1/3)</small>
 
-[🐑 Intro](classes/intro)  <!-- {dl:.width-20.full-width} -->
+[🐑 Intro](classes/intro)  <!-- {dl:.width-20.full-width}
 ~ Introdução à Programação Web e as Ovelhas
 
-<!--
+
 [🦖 HTML1](classes/html1/)
 ~ Plantas Carnívoras, Ingredientes do HTML (_tags_) e Temperando com CSS
 
@@ -135,10 +137,10 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 
 [🦄 CSS3](classes/css3/)
 ~ Fontes, Multimídia e Unicórnios 
--->
 
 
----
+
+----->
 <!-- { "hash": "ementa", "layout": "section-header" } -->
 # Ementa
 
@@ -365,4 +367,3 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
   - Pagamento antes de cada módulo
   - O pagamento é prerequisito para acesso ao módulo
   - O aluno poderá perder o direito de acessar o módulo caso não pague a tempo
-
