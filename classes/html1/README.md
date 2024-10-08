@@ -1,39 +1,11 @@
 <!-- {"layout": "title"} -->
 # **HTML** parte 1
-## Plantas Carnívoras 🌱🦖,<br>_Tags_ HTML e Temperando com CSS
+## _Tags_ HTML e Temperando com CSS
+
 
 ---
-# Na última aula...
+# Hoje vamos...
 
-- Conversamos sobre a história da Internet e da Web
-- ![Foto de Tim Berners-Lee](../../images/tim-berners-lee.jpg) <!-- {.portrait.push-right} --> Vimos as proezas de Tim (Berners-Lee), o coração valente, ao criar:
-  - O protocolo HTTP
-  - A linguagem HTML
-  - Um servidor web (CERN httpd)
-  - O primeiro navegador (WorldWideWeb)
-  - ~~A linguagem CSS~~ (não foi o Tim :scream:)
-  - ~~A linguagem JavaScript~~ (não foi o Tim :scream:)
-
----
-<!-- {"layout": "centered-horizontal"} -->
-# Atividade de Hoje ![Planta carnívora do jogo Mario Bros](../../images/piranha-mario.png) <!--{style="height:1em;"}-->
-
-Você tem um novo _hobby_: **criar plantas carnívoras**.
-<!-- {p:style="width: 50%"} -->
-
-Você encontrou um documento solto em um antigo livro
-do seu tio e, depois de lê-lo, decidiu
-**criar uma página web**.
-<!-- {p:style="width: 50%"} -->
-
----
-<!-- {"layout": "centered-horizontal", "state":"show-active-slide-and-previous", "containerStyles": {"--show-2-slides-x-distance": "300px", "--show-2-slides-z-distance": "-400px"}} -->
-![](../../images/piranha-plant-exercise.png)
-
----
-# Para isso, hoje vamos...
-
-1. Rever o [funcionamento](#funcionamento-web) dos servidores e navegadores
 1. Conhecer a [estrutura básica](#estrutura-basica-html) de um arquivo HTML
 1. Aprender algumas [_tags_ HTML para texto](#tags-html):
    - parágrafos `<p>...</p>`
@@ -43,72 +15,6 @@ do seu tio e, depois de lê-lo, decidiu
 1. Entender um pouco de [estilo CSS](#estilo-css):
    - `color`, `background-color`
    - `margin`, `text-align`
-
----
-<!-- {"layout": "section-header", "hash": "funcionamento-web"} -->
-# Funcionamento da Web
-## Como o navegador conversa com o servidor
-
-- Modelo de **requisição e resposta**
-  1. **Navegador** requisita uma página
-  1. **Servidor** responde
-- **URL**: como identificar um recurso
-
-<!-- {ul:.content} -->
-
----
-<!-- {"embedSVG": "img[src$='.svg']", "embeddedStyles": ".http-diagram .step-3 .level-3 { visibility: visible !important; }"} -->
-## O que um **navegador** faz?
-
-- Quando o usuário "vai" até um novo endereço (URL), o navegador solicita esse
-  **recurso** ao servidor
-  - O **Navegador requisita** algo e **Servidor responde**
-
-1. <!-- {ol:.layout-split-2.bulleted.no-bullets.no-margin.no-padding.compact-code-more.http-diagram} -->
-   ![](../../images/http-diagram-informal.svg) <!-- {.centered.step-3.invert-colors-dark-mode style="max-width: 100%; max-height: 236px"} -->
-   - Requisição: <!-- {ul:.no-bullets.no-padding} -->
-     ```http
-     GET /index.html HTTP/1.1
-     Host: www.twitter.com
-     ```
-1. Resposta:
-   ```http
-   HTTP/1.1 200 OK
-   Date: Mon, 23 May 2005 22:38:34 GMT
-   Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
-   Content-Type: text/html; charset=UTF-8
-   Content-Length: 131 
-
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <title>Twitter</title>
-   </head>
-   <body>
-     Olá mundo, este é um tweet.
-   </body>
-   </html>
-   ```
-
----
-## O que é um URL?
-
-- URL: Unique **Resource** Locator <!-- {ul:.bulleted} -->
-  - É o **endereço de coisas**: **páginas, imagens, arquivos**, etc.   
-    ![As partes de uma URL](../../images/url-parts.svg) <!-- {.block.full-width} -->
-    
-    domínio <!-- {dl.bulleted} -->
-    ~ Em que computador estão os arquivos
-
-    porta
-    ~ Qual endereço do programa dentro do computador
-
-    caminho
-    ~ Qual o endereço até o arquivo
-
-- Assim que recebe a resposta, o navegador mostra na tela, _se der_
- 
-*[URL]: Unique Resource Locator*
 
 ---
 <!-- {"layout": "section-header", "hash": "estrutura-basica-html"} -->
@@ -605,4 +511,4 @@ URL **interna** <!-- {.alternate-color} -->
 <!-- {"layout": "centered"} -->
 # Referências
 
-1. Capítulo 1 do livro
+1. Capítulo 1 do livro - Use a Cabeça - HTML e CSS, 2ª edição
