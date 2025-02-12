@@ -1,111 +1,17 @@
 <!-- {"layout": "title"} -->
 # **HTML** parte 2
-## Coding Dojo :japanese_castle:, Mais _tags_ HTML<br>e Entendendo regras CSS
-
----
-# Na última aula... (1/2)
-
-- Aprendemos:
-  1. Que **plantas carnívoras** ~~se vestem de papai noel~~ são legais
-  1. A **estrutura de um arquivo HTML**
-     ```html
-     <!DOCTYPE html>
-     <html>
-       <head>...</head> <!-- meta-informação sobre a página -->
-       <body>...</body> <!-- tudo que é visível -->
-     </html>
-     ```
-
----
-# Na última aula... (2/2)
-
-- Também vimos:
-  1. Algumas **_tags_ básicas**, como `<p>`, `<img>`, `<h1...6>`, `<a href="">`
-  1. A usar um **pouquinho de CSS**: `color`, `margin`,
-     `background-color`, `font-family`
-
----
-<!-- {"layout": "centered-horizontal"} -->
-# Atividade de Hoje
-
-![Coding Dojo](../../images/coding-dojo.png)
-
-Vamos fazer nosso primeiro **Code Dojo** :japanese_castle:!
+## Mais _tags_ HTML<br>e Entendendo regras CSS
 
 ---
 <!-- {"layout": "centered"} -->
 # Hoje veremos
 
-- [_Tags_ que indicam importância](#tags-de-importancia)
 - [_Tags_ de listas](#tags-de-listas) de itens
 - [Elementos _inline_ _vs._ _block_](#elementos-inline-vs-block)
 - [Mais tipos de hiperlinks](#mais-tipos-de-hiperlinks)
 - [Entendendo regras CSS](#entendendo-regras-css)
 
----
-<!-- {"layout": "section-header", "hash": "tags-de-importancia"} -->
-# _Tags_ de importância
-## Destacando partes do texto
 
-1. _Tag_ `<strong></strong>`
-1. _Tag_ `<em></em>`
-1. _Tags_ `<del></del>` e `<ins></ins>`
-1. _Tag_ `<mark></mark>`
-<!-- {ol:.content} -->
-
----
-## (1) _Tag_ **`<strong></strong>`** :muscle:
-
-- Usada para marcar **texto com alta importância**, seriedade ou urgência:
-  ```html
-  <p><strong>Não se esqueça!</strong> Tragam seus fones de ouvido.</p>
-  ```
-- Por padrão, elementos `<strong>` são desenhados em **negrito**:
-  ::: result
-  <strong style="color: inherit">Não se esqueça!</strong> Tragam seus fones de ouvido.
-  :::
-
----
-## (2) _Tag_ **`<em></em>`**
-
-- Usada para **dar ênfase** ("dar entonação") **ao texto**. A ideia é
-  alterar como uma frase deve ser lida:
-  ```html
-  <p>Gatos são animais <em>bonitinhos</em>.</p>
-  ```
-  - Ao enfatizar _"bonitinhos"_, a frase está reafirmando a caractística dos
-    gatos
-- Por padrão, elementos `<em>` são desenhados em **itálico**:
-  ::: result
-  Gatos são animais <em>bonitinhos</em>.
-  :::
-
----
-## (3) _Tags_ **`<del></del>`** e **`<ins></ins>`** :pencil:
-
-- Usadas para indicar **texto que foi removido** ou **inserido**:
-  ```html
-  <p>O jardineiro é Jesus.</p>
-  <p>E as árvores... somos <del>nós</del> <ins>nozes</ins>.</p>
-  ```
-- Por padrão, elementos `<del>` são **riscados** e `<ins>` são **sublinhados**:
-  ::: result
-  O jardineiro é Jesus.<br>
-  E as árvores... somos <del>nós</del> <ins>nozes</ins>.
-  :::
-
----
-## (4) _Tag_ **`<mark></mark>`** :part_alternation_mark:
-
-- Usada para **realçar parte do texto** considerada **importante para o
-  leitor**. Tipo quando usandos caneta marcadora de texto:
-  ```html
-  <p><mark>HTML, CSS e JavaScript</mark> são as três linguagens da Web.</p>
-  ```
-- Por padrão, elementos `<mark>` possuem o **fundo com a cor amarela**:
-  ::: result
-  <mark>HTML, CSS e JavaScript</mark> são as três linguagens da Web.
-  :::
 
 ---
 <!-- {"layout": "section-header", "hash": "tags-de-listas"} -->
@@ -518,7 +424,374 @@ A _tag_ de hiperlink possui um atributo `target="..."` que pode ter
     não permite definir margens para elementos `inline`
 
 ---
+## Problema: **selecionando** elementos
+
+- Como fazemos para selecionar (_e.g._): <!-- {ul:.bulleted} -->
+  1. apenas **alguns parágrafos** em vez de todos?
+  1. apenas o **primeiro título h2** da página?
+  1. apenas **uma imagem em especial**?
+- Uma solução possível é usar os atributos universais¹ HTML chamados
+  **`class`** e **`id`** para identificar os elementos e estilizá-los
+  > ¹**Atributos universais**: aqueles que qualquer elemento pode ter <cite>Coutinho & Hasan, 2021</cite>
+  >
+- Vamos ver diferentes formas para isso...
+
+---
+## Selecionar **por nome de _tag_**
+
+- Até agora, estilizamos elementos HTML de duas formas:
+- **Primeira forma:** Selecionando a _tag_:
+  ```css
+  p {
+    color: blue;
+  }
+  ```
+  - Isso faz com que **todos os parágrafos** fiquem com a cor azul
+
+---
+## Selecionar **por `id`**
+
+- **Segunda forma:** selecionando 01 elemento em específico
+  - Supondo que temos: `<p id="resumo">Este é o resumo da notícia...</p>`:
+  ```css
+  #resumo {
+    color: blue;
+  }
+  ```
+  - Deixando de cor azul apenas o parágrafo cujo `id` é `resumo`.
+  - Contudo, <u>não pode haver mais de 1 elemento</u> com o mesmo `id` <!-- {li:.bullet} -->
+  - Como fazemos, então, para estilizar não apenas 01, mas **um subconjunto de
+    elementos** da forma como queremos? <!-- {li:.bullet} -->
+    - Resposta: usando **classes** <!-- {li:.bullet} -->
+
+---
+<!-- {"hash": "css-seletor-por-classe"} -->
+## Selecionar **por classe**
+
+- Dada a seguinte estrutura de um `<body></body>`:
+  ```html
+  <p>Primeiro</p>
+  <p>Segundo</p>
+  <p>Terceiro</p>
+  ```
+- Para criar uma regra CSS para, digamos, os dois primeiros parágrafos, podemos
+  alterar a estrutura HTML para:
+  ```html
+  <p class="destacado">Primeiro</p>
+  <p class="destacado">Segundo</p>
+  <p>Terceiro</p> <!-- continua no próximo slide -->
+  ```
+
+---
+## Selecionar por classe (cont.)
+
+- E, em um arquivo CSS, podemos escrever o nome da _tag_, seguido por um ponto
+   "`.`", seguido pelo nome da classe:
+  ```css
+  p.destacado {
+    font-weight: bold; /* negrito */
+  }
+  ```
+- Ou, se quisermos usar a classe `destacado` para outros elementos além de
+  `<p></p>`, podemos omitir o nome da _tag_:
+  ```css
+  .destacado {
+    font-weight: bold;
+  }
+  ```
+
+---
+<!-- {"hash": "incluindo-css"} -->
+# Incluindo arquivo CSS
+
+- Por enquanto, colocamos o CSS **dentro do arquivo HTML**
+   ```html
+   <style> /* reaproveitamento de código CSS dentro do arquivo */
+     p {
+       color: #fff;
+     }     /* misturamos código CSS dentro do arquivo HTML */
+   </style>
+   ```
+   - Mas **isto é uma prática ruim**! :scream:
+
+---
+## Referenciando o **CSS usando a tag _link_**
+
+- Um arquivo HTML pode referenciar ("incluir") um CSS assim:
+  ```html
+  <link rel="stylesheet" href="arquivo-de-estilos.css">
+  ```
+  - Mais de um arquivo HTML pode usar esse CSS
+    - **Reaproveitamento** de código CSS
+  - **_Caching_** do arquivo CSS: o arquivo é baixado apenas uma vez e
+    usado sempre que necessário
+    - Útil se o site tem várias páginas
+- Quando o navegador lê essa linha, ele baixa esse arquivo CSS e o interpreta
+
+---
+<!-- {"layout": "2-column-content"} -->
+## Referenciando o CSS : Exemplo de **atalho no Atom**
+
+- Esqueceu toda a sintaxe (forma de escrita)?
+- Digite apenas `link` e, logo após, aperte <kbd>Tab ↔️</kbd>:
+- O mesmo vale para o VS Code
+
+<video src="../../videos/link-css-atom.mp4" height="340" controls style="margin: 0 auto;"></video>
+
+---
+<!-- {"hash": "cores-e-gradientes", "layout": "main-point", "state": "emphatic"} -->
+<style>
+.color-text { color: #ffff0a; }
+.gradient-text {
+    background: linear-gradient(to right, #0f9000, #c900d6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+
+# <span class="color-text">Cores</span> e <span class="gradient-text">Gradientes</span>
+
+---
+<!-- {"layout": "3-column-content", "slideStyles": {"grid-template-columns": "auto auto auto", "grid-template-rows": "auto auto auto"}, "classes": "compact-code-more", "styles": "../../styles/classes/color-portraits.min.css"} -->
+## Notações: Nome, RGB e Hexadecimal
+
+- ### **Nomes** <!-- {ul:.no-bullets.no-padding.no-margin} -->
+  <pre class="hljs"><code><span class="color-portrait red"></span> red
+  <span class="color-portrait cyan"></span> cyan
+  <span class="color-portrait gold"></span> gold
+  <span class="color-portrait forestgreen"></span> forestgreen
+  <span class="color-portrait cornflowerblue"></span> cornflowerblue
+  <span class="color-portrait rebeccapurple"></span> rebeccapurple
+  ⋮</code></pre>
+1. ### Notação **RGB** <!-- {ol:.no-bullets.no-padding.no-margin} -->
+   <pre class="hljs"><code>rgb(<span style="color: #fb4d4d">verme</span>, <span style="color: #18dc18">verde</span>, <span style="color: cornflowerblue;">azul</span>)</code></pre>
+   - rgb(...) com número entre 0...255 para <u>verme</u>lho, <u>verde</u>, <u>azul</u> <!-- {li:.smaller-text-80} -->
+- ### Notação **Hexadecimal** <!-- {ul:.no-bullets.no-padding.no-margin} -->
+  <pre class="hljs"><code>#<span style="color: #fb4d4d">vm</span><span style="color: #18dc18">vd</span><span style="color: cornflowerblue">az</span></code></pre>
+  - '#' + 2 caracteres para <u>v</u>er<u>m</u>elho, <u>v</u>e<u>r</u>de, <u>az</u>ul <!-- {li:.smaller-text-80} -->
+  - (0...9, A(10)...F(15)) <!-- {li:.smaller-text-80} -->
+
+1. Exemplo: <!-- {ol:.no-bullets.no-padding.no-margin} -->
+   ```css
+   p {
+     color: cyan;
+   }
+   ```
+- Exemplo:<!-- {ul:.no-bullets.no-padding.no-margin} -->
+  ```css
+  p {
+    color: rgb(0, 255, 255);
+  }
+  ```
+1. Exemplo:<!-- {ol:.no-bullets.no-padding.no-margin} -->
+   ```css
+   p {
+     color: #00ffff;
+   }
+   ```
+
+---
+<!-- {"layout": "3-column-content", "slideStyles": {"grid-template-columns": "auto auto auto", "grid-template-rows": "auto auto auto"}, "classes": "compact-code-more", "styles": "../../styles/classes/color-portraits.min.css"} -->
+## Cores **com opacidade** <!-- {.underline.upon-activation.delay-1000} --> (transparência)
+
+- ### **Nomes** <!-- {ul:.no-bullets.no-padding.no-margin} --> ❌
+  <pre class="hljs"><code><span class="color-portrait red"></span> red
+  <span class="color-portrait cyan"></span> cyan
+  <span class="color-portrait gold"></span> gold
+  <span class="color-portrait forestgreen"></span> forestgreen
+  <span class="color-portrait cornflowerblue"></span> cornflowerblue
+  <span class="color-portrait rebeccapurple"></span> rebeccapurple
+  ⋮</code></pre>
+  - Não tem como <!-- {li:.smaller-text-80} -->
+1. ### Notação **RGB<u>A</u>** <!-- {ol:.no-bullets.no-padding.no-margin} -->
+   <pre class="hljs"><code>rgb<ins>a</ins>(verme, verde, azul, <ins style="color: black; font-weight: bolder">alpha</ins>)</code></pre>
+   - `alpha` é a opacidade da cor <!-- {li:.smaller-text-80} -->
+     - opacidade = 1 - transparência <!-- {li:.smaller-text-80} -->
+   - De 0 (transp.) até 1 (opaco) <!-- {li:.smaller-text-80} -->
+- ### Notação **Hexadecimal <u>+AA</u>** <!-- {ul:.no-bullets.no-padding.no-margin} -->
+  <pre class="hljs"><code>#vmvdaz<ins style="color: black; font-weight: bolder">aa</ins></code></pre>
+  - 2 caracteres para `alpha` <!-- {li:.smaller-text-80} -->
+  - De 0 (transp.) até FF (opaco) <!-- {li:.smaller-text-80} -->
+
+1. Exemplo: <!-- {ol:.no-bullets.no-padding.no-margin} -->
+   - Não tem!
+- Exemplo:<!-- {ul:.no-bullets.no-padding.no-margin} -->
+  ```css
+  p {
+    color: rgba(0, 255, 255, 0.5);
+  }
+  ```
+1. Exemplo:<!-- {ol:.no-bullets.no-padding.no-margin} -->
+   ```css
+   p {
+     color: #00ffff80;
+   }
+   ```
+
+---
+## Mais exemplos de cores
+
+- ```css
+  #FF0033 /* maiúsc. ou min. */
+  #ff0033
+  #f03
+  ```
+  <!-- {ul:.push-code-right} -->
+  Se ambos caracteres de cada componente em hexa são iguais (ex: `#ff0033`), pode escrever só 1 de cada (ex: `#f03`)
+- ```css
+  rgb(255, 0, 51)
+  rgb(100%, 0%, 20%)
+  rgba(255, 0, 0, 0.1)         
+  ```
+  Em vez de 0...255, pode escrever 0%...100% <!-- {li:.clearer} -->
+- ```css
+  hsl(60, 100%, 50%)
+  hsla(240, 100%, 50%, 0.05)   
+  ````
+  Também existe `hsl(hue, sat, light)`, mas é menos comum <!-- {li:.clearer} -->
+
+---
+<!-- {"layout": "centered-horizontal", "hash": "escolhendo-cores"} -->
+## Escolhendo cores (<kbd>F12</kbd>)
+
+<video src="../../videos/escolhendo-cores.mp4" height="460" controls style="margin: 0 auto;"></video>
+
+---
+<!-- {"hash": "gradientes"} -->
+## Gradientes (ou degradês)
+
+- `linear-gradient` é um **valor válido para `background-image`**,
+      e não para `background-color` nem para `color`
+  - Veja a documentação do que é um [`gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient)
+
+1. <!-- {ol:.item-code-with-image.full-width.compact-code-more} -->
+   ::: result . max-width: calc(100% - 600px);
+   0 graus, iniciando com azul e terminando como verde <!-- {style="background-image: linear-gradient( 0deg, blue, #00FF00 ); font-size: 75%; color: white; text-shadow: 1px 1px black;"} -->
+   :::
+   ```css
+   p {
+     background-image: linear-gradient( 0deg, blue, #00FF00 );
+   }
+   ```
+1. ::: result . max-width: calc(100% - 650px);
+   Começa amarelo e termina azul no canto esquerdo superior  <!-- {style="background-image: linear-gradient( to left top, yellow, blue ); font-size: 75%; color: white; text-shadow: 1px 1px black;"} -->
+   :::
+   ```css
+   p {
+     background-image: linear-gradient( to left top, yellow, blue );
+   }
+   ```
+1. ::: result . max-width: calc(100% - 600px);
+   Azul, branco e verde <!-- {style="background-image:linear-gradient( 90deg, blue, white 20%,#00FF00); font-size: 75%; color: white; text-shadow: 1px 1px black;"} -->
+   :::
+   ```css
+   p {
+     background-image: linear-gradient( 90deg, blue, white 20%, #00FF00 );
+   }
+   ```
+
+---
+<!-- {"layout": "section-header", "hash": "abelhas-e-suas-castas"} -->
+# Abelhas :honeybee: e suas castas
+## :honey_pot: :honey_pot: :honey_pot: :honey_pot: :honey_pot:
+
+- A atividade das abelhas
+- Flutuando coisas
+- Pesquisando novas propriedades CSS/elementos HTML
+<!-- {ul:.content} -->
+
+---
+<!-- {"hash": "flutuando-coisas"} -->
+# Flutuando coisas
+
+> ![](../../images/float-magazine.png) <!-- {.push-right style="height: 200px;"} -->
+  **Jornais e revistas** costumam colocar **imagens junto ao texto** para
+  fazer uma bela diagramação do conteúdo
+> <cite>Coutinho, 2017</cite>
+> Isso se chama **deixar o elemento** (_e.g._, imagem) **flutuando**
+> <cite>Hasan, 2017</cite>
+
+- Na web também queremos fazer isso!
+
+---
+<!-- {"layout": "centered-horizontal"} -->
+## Como flutuar elementos usando CSS?
+
+![](../../images/pratica-abelhas-operarias.png)
+
+Vamos conhecer um nova propriedade: `float`
+
+---
+## Propriedade `float`
+
+- Usado para alterar o fluxo tradicional da página
+  - Em CSS:  
+    ```css
+    img#abelha-operaria {
+      float: left; /* left, right, none */
+    }              /* none é o valor padrão - sem flutuação */
+    ```
+  - No HTML:
+    ```html
+    <img id="abelha-operaria" src="...">
+    <p>Texto ...</p>
+    ```
+
+---
+## Como funciona o `float`
+
+- ![](../../images/float-p1.png) <!-- {.push-right} -->
+  Um elemento flutuante é removido do fluxo tradicional e
+  - os elementos `block` depois dele fingem que ele não está ali
+  - os elementos `inline` depois dele respeitam seu formato
+- Vamos fazer com que o parágrafo com `id="amazing"`
+  flutue à direita **nos próximos 2 slides**...
+
+---
+## Exemplo de `float` (1º passo)
+
+- ![](../../images/float-p2.png)  <!-- {.push-right style="max-height: 440px;"} -->
+  Alterando a largura de um parágrafo para 200px
+  ```css
+  p#amazing {
+    width: 200px;
+  }
+  ```
+
+---
+## Exemplo de `float` (2º passo)
+
+- ![](../../images/float-p3.png)  <!-- {.push-right style="max-height: 350px;"} -->
+  Flutuando o parágrafo à direita
+  ```css
+  p#amazing {
+    width: 200px;
+    float: right;
+  }
+  ```
+  - Repare que:
+    - Elementos declarados <u>antes</u> do parágrafo flutuante
+      **não são alterados**
+    - Elementos declarados <u>depois</u>:
+      - Se forem `block`, **ignoram** o elemento flutuante
+      - Se forem `inline`, **respeitam** o elemtno flutuante
+
+---
+<!-- {"hash": "arredondando-bordas"} -->
+# Arredondando bordas
+
+- ![](../../images/borda-arredondada.png) <!-- {.push-right} -->
+  Como arredondar bordas?
+  - Há muitas propriedades CSS que não teremos tempo de ver no curso
+  - Contudo, a Web é uma ótima fonte de informação
+  - Pesquise ["como arredondar bordas em CSS" no Google][border-radius-google],
+    por exemplo
+
+[border-radius-google]: https://www.google.com.br/search?hl=pt-BR&q=como+arredondar+bordas+em+css&meta=
+
+
+---
 <!-- {"layout": "centered"} -->
 # Referências
 
-1. Capítulos 1, 2 e 3 do livro
+1. Capítulos 1, 2, 3 do livro "Use a Cabeça -  HTML e CSS"
