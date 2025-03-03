@@ -140,6 +140,11 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 ~ Divitite e _tags_ semânticas, Box Model, Float, _Pseudo-coisas_ e Assombrações
 
 
+[🐸🥕 CSS2](classes/css2/)
+~ Posicionamento, visibilidade, <br>Flexbox e Grid 🐸🥕
+
+[:palm_tree: CSS3](classes/css3/)
+~ Layouts, _custom properties_ e a<br><span style="font-family: Ravie, serif; color: #e90c0c; text-shadow: 1px 1px black;">Lanchonete do Coral 55</span>
 
 
 <!--
