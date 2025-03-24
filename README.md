@@ -120,7 +120,7 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 
 ---
 <!-- {"hash": "slides"} --> 
-# Aulas <!-- <small>(1/3)</small> -->
+# Aulas <small>(1/2)</small> 
 
 [🐑 Intro](classes/intro)   <!-- {dl:.width-20.full-width} -->
 ~ Introdução à Programação Web e as Ovelhas
@@ -140,12 +140,27 @@ Qualidades de uso, design de interface e interação, avaliação  de interfaces
 ~ Divitite e _tags_ semânticas, Box Model, Float, _Pseudo-coisas_ e Assombrações
 
 
+
+
+
+
+
+---
+<!-- {"hash": "slides"} --> 
+# Aulas <small>(2/2)</small>
+
 [🐸🥕 CSS2](classes/css2/)
 ~ Posicionamento, visibilidade, <br>Flexbox e Grid 🐸🥕
+
 
 [:palm_tree: CSS3](classes/css3/)
 ~ Layouts, _custom properties_ e a<br><span style="font-family: Ravie, serif; color: #e90c0c; text-shadow: 1px 1px black;">Lanchonete do Coral 55</span>
 
+[🍕 HTML4](classes/html4/)
+~ Elementos HTML de entrada,  formulários e Pizzas 🍕
+
+[🏪 CSS4](classes/css4/)
+~ Responsive Web Design e a super loja
 
 <!--
  [👑 HTML3](classes/html3/)
