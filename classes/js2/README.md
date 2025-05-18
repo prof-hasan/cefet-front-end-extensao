@@ -1,6 +1,6 @@
 <!-- {"layout": "title"} -->
 # **JavaScript** parte 2
-## Estrutura de competição, vetores, mais sobre funções e métodos úteis de strings
+## Estrutura de reptição, vetores, mais sobre funções e métodos úteis de strings
 
 
 ---
@@ -8,15 +8,15 @@
 # Hoje veremos...
 
 1. [Estruturas de Repetição](#repeticao)
-1. [Vetores](#condicionais-vetores-e-estruturas-de-repeticao)
-1. [Mais sobre funções e Métodos úteis](#mais-sobre-funcoes-e-metodos-uteis)
+1. [Vetores](#vetores)
+1. [Mais sobre funções e Métodos úteis](#funcoes)
 
 
 ---
 <!-- {"layout": "section-header", "hash": "repeticao"} -->
 # Estruturas de repetição
 ## _Arrays_, for, while e variações
-- Intuição, acumulador e valores máximos
+- Intuição, acumulador
 - For
     - Tradicional
     - For of
@@ -73,7 +73,6 @@
    } while (i !== 10);
    ```
 
----
 ---
 <!-- {"layout": "section-header", "hash": "vetores"} -->
 # Vetores
@@ -344,9 +343,114 @@ let listaDeCoisas = ['Aew', 35, true, [], 'outra string'];
 
 - [Lista de métodos comuns de vetores na MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
+
+
+---
+<!-- {"layout": "2-column-content", "hash": "vetores-de-objeto", "slideStyles": {"grid-template-columns": ".32fr .68fr"}} -->
+## Vetores de Objetos <!-- {.compact-code} -->
+
+```js  
+let jogadores = [      
+  {
+    nome: 'Yoda',
+    pontos: 1420
+  },
+  {
+    nome: 'Leia',
+    pontos: 3010
+  },
+  {
+    nome: 'Luke',
+    pontos: 5600
+  }
+];
+
+```
+- Como qualquer outro tipo, podemos fazer um vetor de _Objects_:
+- Posteriormente, **podemos percorrer o vetor**:
+  ```js
+  for (let i = 0; i < jogadores.length; i++) {
+    console.log('Nome: ' + jogadores[i].nome);
+    console.log('Pontos: ' + jogadores[i].pontos);
+  }
+  ```
+  - Também podemos usar
+    [`for of` e `vetor.forEach()`](../js2/#for-formas-preferiveis)
+    sem problemas!
+
+---
+<!-- {"layout": "2-column-content", "hash": "passando-vetores-como-argumentos", "slideStyles": {"grid-template-columns": ".55fr .45fr"}, "classes": "compact-code-more"} -->
+## Passando objetos como argumentos
+
+- Podemos passar objetos como **argumentos para funções**
+- A função é declarada como **recebendo 1 parâmetro** :arrow_lower_right:
+  - Não definimos o tipo do parâmetro!
+- Chamamos ela passando um **objeto como argumento** :arrow_lower_right:
+- Para um **vetor** percorremos chamando a função para o
+  i-ésimo item :arrow_lower_right: <!-- {ul^1:.bulleted} -->
+
+```js
+let jogadores = [
+  { nome: 'Yoda', pontos: 1420 },
+  { nome: 'Leia', pontos: 3010 },
+  { nome: 'Luke', pontos: 5600 }
+];
+
+function passouDeFase(player) {
+  // a função recebe 1 parâmetro,
+  // que demos o nome de player
+  player.pontos += 1000;
+}
+
+// podemos chamar a função para 1 jogador:
+passouDeFase(jogadores[0]);   // Yoda
+
+// ...ou para todos eles, percorrendo o vetor:
+for (let i = 0; i < jogadores.length; i++) {
+  passouDeFase(jogadores[i]);
+}
+
+
+// equivalente, porém super-mega-ultra
+// ELEGANTE, usando vetor.forEach:
+jogadores.forEach(passouDeFase);  // 🌟🌟🌟
+```
+
+---
+<!-- {"layout": "2-column-content"} -->
+## Quando usar objetos?
+
+- Usamos objetos para:
+  1. **Agrupar informações** correlacionadas
+  1. **Reduzir** o número de **parâmetros**
+  1. Trabalhar com **vários objetos semelhantes**
+     - Em um vetor
+     ```js
+     let macunaima = { /* ... */ },
+      mentecapto = { /*... */ };
+     let biblioteca = [   // (3)
+       macunaima, mentecapto];
+     ```
+```js
+// poderíamos fazer assim: 👎
+let autorDoLivro = 'Mário de Andr.',
+  nomeDoLivro = 'Macunaíma',
+  anoDoLivro = 1928;
+
+// mas assim é melhor (1): 👍
+let livro = {
+  autor: 'Mário de Andrade',
+  nome: 'Macunaíma',
+  ano: 1928
+};
+
+function incluiNaBiblioteca(livro) {
+  // (2) ...
+}
+```
 ---
 <!-- {"layout": "2-column-content", "classes": "compact-code-more"} -->
-## Exemplos com métodos de vetores (1/2)
+## Exemplos com vetores (1/2)
 
 - Função que soma todos os elementos do vetor <!-- {ul:.bulleted} -->
   ```js
@@ -386,7 +490,7 @@ let listaDeCoisas = ['Aew', 35, true, [], 'outra string'];
 
 ---
 <!-- {"classes": "compact-code-more"} -->
-## Exemplos com métodos de vetores (2/2)
+## Exemplos com vetores (2/2)
 
 - Função que imprime uma matriz n x n de números <!-- {ul:.full-width.bulleted} --> ([no jsfiddle](https://jsfiddle.net/fegemo/f0uc4qyx/)) <!-- {target="_blank"} -->
 - <!-- {.code-split-2} -->
@@ -443,9 +547,11 @@ let listaDeCoisas = ['Aew', 35, true, [], 'outra string'];
 
 
 ---
+<!-- {"layout": "section-header", "hash": "funcoes"} -->
 # Mais sobre funções
+## Funções anonimas, funções como variáveis e parâmetros
 
-- Em JavaScript as **funções são super flexíveis**
+- Em JavaScript as <mark>**funções são super flexíveis**</mark>
   1. Função "tradicional" (já vimos)
   1. Função anônima (próximo slide)
   1. Função seta (próxima aula)
