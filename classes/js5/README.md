@@ -1,6 +1,6 @@
 <!-- {"layout": "title"} -->
 # **JavaScript** parte 4
-## Usando objetos, Criando elementos HTML<br>e a Lista de Tarefas :notebook:
+## Criando elementos HTML<br>e a Lista de Tarefas :notebook:
 
 
 ---
