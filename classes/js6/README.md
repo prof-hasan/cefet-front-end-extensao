@@ -1,5 +1,5 @@
 <!-- {"layout": "title"} -->
-# **JavaScript** parte 7
+# **JavaScript** parte 6
 ## Ajax e as Guerras Estelares :stars:
 
 ---
