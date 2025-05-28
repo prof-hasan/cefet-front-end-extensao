@@ -2,7 +2,7 @@
 { "backdrop": "blastoff" }
 -->
 
-# Javascript - Parte 5
+# Javascript - Parte 4
 
 ## APIs do html5
 
@@ -14,9 +14,6 @@
    1. Canvas
    1. Drag'n'drop
 
-1. Seminários: As peripércias de "Agáte Êmi-Éli, o Quinto". [Ver especificação](https://github.com/daniel-hasan/cefet-web-grad/blob/master/assignments/seminar-html5/README.md)
-
-1. [TP1: Site pessoal](https://github.com/daniel-hasan/cefet-web/tree/master/assignments/tp1-mysite)
 
 ---
 <!-- {"layout": "section-header"} -->
@@ -28,8 +25,8 @@
 - Geolocation API
   - Integrando com Google Maps
 - Canvas API (2D)
+- Phaser API
 - Drag and Drop API
-- History API
 <!-- {ul^1:.content} -->
 
 ---
@@ -53,7 +50,7 @@
 - Casos de uso:
   1. Localização em um mapa
   1. Pesquisa de locais próximos ao usuário
-  1. Rastreador de namorado/namorada
+  1. Recomendação de conteúdo
 - Como o navegador consegue a localização?
 
 ---
@@ -82,7 +79,7 @@ function rastrear(posicao) {
   window.alert(msg);
 }
 ```
-<button onclick="javascript:function rastrear(posicao){console.dir(posicao); let msg='Eu sei aonde você está!!\n\n';msg+='lat: '+posicao.coords.latitude+', ';msg+='long: '+posicao.coords.longitude;window.alert(msg);} navigator.geolocation.getCurrentPosition(rastrear); this.innerText='Mwahaha...';">Rastrear</button>
+<button onclick="javascript:function rastrear(posicao){console.dir(posicao); let msg='Eu sei aonde você está!!\n\n';msg+='lat: -19.9157, ';msg+='long: -43.9506';window.alert(msg);} navigator.geolocation.getCurrentPosition(rastrear); this.innerText='Mwahaha...';">Rastrear</button>
 - Observação: hoje em dia, o navegador só da acesso a essa API se a página
   tiver sido carregada em **HTTPs** (e não em **HTTP**)
 
@@ -182,7 +179,7 @@ window.onload = function() {
 
 ## O resultado
 
-<button type="button" onclick="function showMap(a){let b=a.coords,c={zoom:12,center:{lat:b.latitude,lng:b.longitude}},d=document.getElementById('gmaps-example');map=new window.google.maps.Map(d,c)}let map;navigator.geolocation&&navigator.geolocation.getCurrentPosition(showMap);">Carregar mapa</button>
+<button type="button" onclick="function showMap(a){let b=a.coords,c={zoom:16,center:{lat:-19.930519,lng:-43.9810476}},d=document.getElementById('gmaps-example');map=new window.google.maps.Map(d,c)}let map;navigator.geolocation&&navigator.geolocation.getCurrentPosition(showMap);">Carregar mapa</button>
 <div id="gmaps-example" class="gmap">
   O mapa será carregado aqui...
 </div>
@@ -206,7 +203,7 @@ function addMarker(map, latlong, title, content) {
 ---
 ## O resultado com o marcador
 
-<button type="button" onclick="function showMap2(a){let b=a.coords,c={zoom:12,center:{lat:b.latitude,lng:b.longitude}},d=document.getElementById('gmaps-example-2');map=new google.maps.Map(d,c);let e={position:{lat:b.latitude,lng:b.longitude},map:map,title:'Aqui estamos',clickable:!1};new google.maps.Marker(e)}let map;navigator.geolocation&&navigator.geolocation.getCurrentPosition(showMap2);">Carregar mapa</button>
+<button type="button" onclick="function showMap2(a){let b=a.coords,c={zoom:16,center:{lat:-19.930519,lng:-43.9810476}},d=document.getElementById('gmaps-example-2');map=new google.maps.Map(d,c);let e={position:{lat:-19.930519,lng:-43.9810476},map:map,title:'Aqui estamos',clickable:!1};new google.maps.Marker(e)}let map;navigator.geolocation&&navigator.geolocation.getCurrentPosition(showMap2);">Carregar mapa</button>
 <div id="gmaps-example-2" class="gmap">
   O mapa será carregado aqui...
 </div>
@@ -246,19 +243,7 @@ function addMarker(map, latlong, title, content) {
 ## Desenhando no canvas (cont.)
 
 - Solicitando o contexto gráfico e desenhando dois retângulos
-  ```js
-  function desenhaRetangulos() {
-    let ctx = document.getElementById('tela').getContext('2d');
-    ctx.fillStyle = 'rgb(200,0,0)';
-    ctx.fillRect (10, 10, 55, 50);
-    ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-    ctx.fillRect (30, 30, 55, 50);
-  }
-  ```
-  <button type="button" style="float:right" onclick="javascript:let ctx = document.getElementById('tela').getContext('2d');ctx.fillStyle='rgb(200,0,0)';ctx.fillRect (10, 10, 55, 50);ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';ctx.fillRect (30, 30, 55, 50);">Desenha retângulos</button>
-  <canvas id="tela" width="100" height="80">
-    Seu navegador não tem suporte ao elemento <code>canvas</code>.
-  </canvas>
+<iframe width="600" height="250" src="//jsfiddle.net/4msowz8r/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0" class="push-right bring-forward">
 
 ---
 ## Contexto gráfico
@@ -267,7 +252,7 @@ function addMarker(map, latlong, title, content) {
 - Como argumento, passamos o tipo do contexto ("2d")
 - Já existe o contexto "3d", que foi/está sendo adicionado ao html
   - Contudo, a API do contexto "3d" é totalmente diferente (usa WebGL)
-- Obtido o contexto, podemos começar a invocar métodos para desenhar (e.g., `fillRect(x1, y1, x2, y2);`)
+- Obtido o contexto, podemos começar a invocar métodos para desenhar (e.g., `fillRect(x1, y1, largura, altura);`)
 
 ---
 ## Sistema de coordenadas
@@ -296,18 +281,8 @@ function addMarker(map, latlong, title, content) {
 ---
 ## Exemplo
 
-```js
-function desenhaRetanguloFurado() {
-  let ctx = document.getElementById('tela').getContext('2d');
-  ctx.fillRect(25,25,100,100);
-  ctx.clearRect(45,45,60,60);
-  ctx.strokeRect(50,50,50,50);
-}
-```
-<button type="button" style="float:right" onclick="javascript:let a=document.getElementById('tela-2').getContext('2d');a.fillRect(25,25,100,100),a.clearRect(45,45,60,60),a.strokeRect(50,50,50,50)">Desenha retângulo furado</button>
-<canvas id="tela-2" width="150" height="150">
-  Seu navegador não tem suporte ao elemento <code>canvas</code>.
-</canvas>
+
+<iframe width="600" height="250" src="//jsfiddle.net/1xuwe7ra/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0" class="push-right bring-forward">
 
 ---
 ## Usando **trajetórias** (path)
@@ -380,42 +355,14 @@ function desenhaRetanguloFurado() {
 ---
 ## Exemplos de trajetórias (arcos)
 
-```js
-ctx.beginPath();
-ctx.arc(75,75,50,0,Math.PI*2,true); // Rosto
-ctx.moveTo(110,75);
-ctx.arc(75,75,35,0,Math.PI);        // Boca hor.
-ctx.moveTo(65,65);
-ctx.arc(60,65,5,0,Math.PI*2,true);  // Olho esq.
-ctx.moveTo(95,65);
-ctx.arc(90,65,5,0,Math.PI*2,true);  // Olho dir.
-ctx.stroke();
-```
 
-<button type="button" style="float:right" onclick="javascript:let ctx=document.getElementById('tela-3').getContext('2d');ctx.beginPath(),ctx.arc(75,75,50,0,2*Math.PI,!0),ctx.moveTo(110,75),ctx.arc(75,75,35,0,Math.PI,!1),ctx.moveTo(65,65),ctx.arc(60,65,5,0,2*Math.PI,!0),ctx.moveTo(95,65),ctx.arc(90,65,5,0,2*Math.PI,!0),ctx.stroke();">Desenha <em>smile</em></button>
-<canvas id="tela-3" width="150" height="150">
-  Seu navegador não tem suporte ao elemento <code>canvas</code>.
-</canvas>
+<iframe width="600" height="250" src="//jsfiddle.net/8zh7y5qk/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0" class="push-right bring-forward">
 
 ---
 ## Exemplos de trajetórias (curvas quadráticas)
 
-```js
-ctx.beginPath();
-ctx.moveTo(75,25);
-ctx.quadraticCurveTo(25,25,25,62.5);
-ctx.quadraticCurveTo(25,100,50,100);
-ctx.quadraticCurveTo(50,120,30,125);
-ctx.quadraticCurveTo(60,120,65,100);
-ctx.quadraticCurveTo(125,100,125,62.5);
-ctx.quadraticCurveTo(125,25,75,25);
-ctx.stroke();
-```
 
-<button type="button" style="float:right" onclick="javascript:let ctx=document.getElementById('tela-4').getContext('2d');ctx.beginPath(),ctx.moveTo(75,25),ctx.quadraticCurveTo(25,25,25,62.5),ctx.quadraticCurveTo(25,100,50,100),ctx.quadraticCurveTo(50,120,30,125),ctx.quadraticCurveTo(60,120,65,100),ctx.quadraticCurveTo(125,100,125,62.5),ctx.quadraticCurveTo(125,25,75,25),ctx.stroke();">Desenha balão</button>
-<canvas id="tela-4" width="150" height="150">
-  Seu navegador não tem suporte ao elemento <code>canvas</code>.
-</canvas>
+<iframe width="600" height="250" src="//jsfiddle.net/qu8Lnmb4/embedded/js,result/" allowfullscreen="allowfullscreen" frameborder="0" class="push-right bring-forward">
 
 ---
 ## Mais recursos sobre canvas na MDN
@@ -478,7 +425,7 @@ ctx.stroke();
 </div>
 
 ---
-## 1º passo para _Drag and Drop_
+## 1º passo para _Drag and Drop_ - Região Alvo
 
 - Defina um elemento arrastável usando o atributo global `draggable="true"`
   ```html
@@ -492,7 +439,7 @@ ctx.stroke();
   ```
 
 ---
-## 2º passo para _Drag and Drop_
+## 2º passo para _Drag and Drop_ - Região Alvo
 
 - Deve haver um elemento alvo para receber os elementos soltos (_dropped_).
   Para que um elemento seja considerado um alvo, ele deve implementar os eventos:
@@ -500,13 +447,15 @@ ctx.stroke();
   ```js
   dragTarget.addEventListener('dragover', function(e) {
     e.preventDefault();
-    this.classList.add('element-over-me');
+    dragTarget.classList.add('element-over-me');
     e.dataTransfer.dropEffect = 'move';
   });
   ```
+  - `e.dataTransfer.dropEffect = 'move'`: Informa ao navegador/usuário que o item está sendo movido. 
+  O usuário terá uma resposta visão (usualmente mudando o cursor)
 
 ---
-## 3º passo para _Drag and Drop_
+## 3º passo para _Drag and Drop_ - Região Alvo
 
 - O alvo deve também implementar o evento `drop`, que é chamado quando o elemento
   sendo arrastado é solto:
@@ -520,7 +469,7 @@ ctx.stroke();
   ```
 
 ---
-## 4º passo para _Drag and Drop_
+## 4º passo para _Drag and Drop_ - Região Alvo
 
 - O alvo pode implementar o evento `dragleave`, chamado quando um elemento
   arrastado sai de cima dela (sem largar):
@@ -531,7 +480,7 @@ ctx.stroke();
   ```
 
 ---
-## 5º passo para _Drag and Drop_
+## 5º passo para _Drag and Drop_ - Item arrastável
 
 - Por fim, os elementos arrastáveis devem implementar o evento `dragstart` e
   declarar o conteúdo que será "arrastado":

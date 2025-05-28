@@ -1,6 +1,6 @@
 <!-- {"layout": "title"} -->
 # **JavaScript** parte 2
-## Estrutura de reptição, vetores, mais sobre funções e métodos úteis de strings
+## Estrutura de repetição, vetores, mais sobre funções e métodos úteis de strings
 
 
 ---
